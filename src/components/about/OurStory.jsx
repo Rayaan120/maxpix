@@ -11,9 +11,9 @@ const OurStory = () => {
     const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
     return (
-        <section ref={containerRef} className="py-24 md:py-32 bg-[var(--color-warm-gray)] relative z-10 overflow-hidden">
+        <section ref={containerRef} className="py-6 md:py-8 bg-[var(--color-warm-gray)] relative z-10 overflow-hidden">
             <div className="container mx-auto px-6 md:px-12 relative">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
                     {/* Left: Sticky or static Text Content */}
                     <div className="flex flex-col justify-center">
@@ -31,7 +31,7 @@ const OurStory = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="text-5xl md:text-6xl lg:text-7xl font-black text-[var(--color-charcoal)] leading-[1.1] tracking-tighter mb-8"
+                            className="text-5xl md:text-6xl lg:text-7xl font-black text-[var(--color-charcoal)] leading-[1.1] tracking-tighter mb-4"
                         >
                             Engineering <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-charcoal)] to-gray-400">
@@ -46,10 +46,10 @@ const OurStory = () => {
                             transition={{ delay: 0.2 }}
                             className="prose prose-lg text-gray-600 font-light"
                         >
-                            <p className="mb-6">
+                            <p className="mb-3">
                                 We do not just build exhibition stands; we architect immersive environments. Our methodology is rooted in the seamless integration of bold commercial design and uncompromising fabrication quality.
                             </p>
-                            <p className="mb-8">
+                            <p className="mb-4">
                                 From premium corporate events across the UAE to large-scale structural signage, our approach ensures your physical presence is as powerful as your brand's ambitions. We deploy cutting-edge production technology and meticulous on-site execution to deliver spaces that demand attention and drive engagement.
                             </p>
                         </motion.div>

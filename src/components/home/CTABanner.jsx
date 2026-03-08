@@ -28,8 +28,8 @@ const CTABanner = () => {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="relative z-10"
                 >
-                    <h2 className="text-5xl md:text-7xl lg:text-[8vw] font-black text-white tracking-tighter leading-none mb-8 drop-shadow-2xl">
-                        START YOUR <br />
+                    <h2 className="text-5xl md:text-7xl lg:text-[7vw] font-black text-white tracking-tighter leading-[0.85] mb-8 drop-shadow-2xl">
+                        PREMIER EXHIBITION <br />
                         <span
                             className="inline-block"
                             style={{
@@ -38,14 +38,17 @@ const CTABanner = () => {
                                 textShadow: '0 0 30px rgba(0, 0, 0, 0.2)'
                             }}
                         >
-                            PROJECT.
+                            STAND BUILDER
                         </span>
                     </h2>
+                    <p className="text-white/90 text-lg md:text-2xl max-w-3xl mx-auto mb-10 font-medium tracking-tight leading-relaxed drop-shadow-lg">
+                        Innovative exhibition stand design, custom signage fabrication, and corporate event production services across Dubai & the UAE.
+                    </p>
                     <Link
                         to="/contact"
-                        className="inline-flex items-center justify-center px-10 py-5 bg-white text-[var(--color-charcoal)] font-bold text-lg md:text-xl rounded-full hover:bg-black hover:text-white transition-all duration-300 transform hover:scale-105 shadow-2xl"
+                        className="inline-flex items-center justify-center px-12 py-5 bg-white text-[var(--color-charcoal)] font-bold text-lg md:text-xl rounded-full hover:bg-black hover:text-white transition-all duration-300 transform hover:scale-105 shadow-2xl"
                     >
-                        Request a Proposal
+                        Get a Free Proposal
                     </Link>
                 </motion.div>
             </motion.div>

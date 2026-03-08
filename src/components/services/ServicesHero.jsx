@@ -27,12 +27,12 @@ const ServicesHero = () => {
                     animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                 >
-                    <h1 className="text-[14vw] font-black leading-none tracking-tighter text-outline-dark mix-blend-screen opacity-50 absolute -top-20 left-1/2 -translate-x-1/2 pointer-events-none w-full text-center uppercase">
-                        SIGNAGE & PRINT
+                    <h1 className="text-[12vw] font-black leading-none tracking-tighter text-outline-dark mix-blend-screen opacity-50 absolute -top-20 left-1/2 -translate-x-1/2 pointer-events-none w-full text-center uppercase">
+                        STAND BUILDERS & SIGNAGE
                     </h1>
-                    <h2 className="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-tighter relative z-10 mt-10">
-                        PREMIER SIGNAGE & <br />
-                        <span className="text-[var(--color-primary-red)] text-4xl md:text-6xl">BRANDING SOLUTIONS IN UAE.</span>
+                    <h2 className="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-tighter relative z-10 mt-10 uppercase">
+                        DUBAI'S BEST <br />
+                        <span className="text-[var(--color-primary-red)] text-4xl md:text-6xl">EXHIBITION STAND BUILDERS</span>
                     </h2>
                 </motion.div>
 
@@ -43,7 +43,7 @@ const ServicesHero = () => {
                     className="mt-12 max-w-3xl mx-auto"
                 >
                     <p className="text-gray-400 text-lg md:text-xl font-light leading-relaxed">
-                        As Dubai's leading creative production house, we specialize in high-impact indoor & outdoor signage, large format digital printing, and bespoke exhibition stand fabrication across the UAE market.
+                        The ultimate destination for exhibition stand builders in Dubai. We specialize in 3D signage fabrication, vehicle branding UAE, and large format digital printing to elevate your brand's presence across the Middle East.
                     </p>
                 </motion.div>
             </motion.div>

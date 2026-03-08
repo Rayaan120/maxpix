@@ -23,8 +23,8 @@ const ContactInfo = () => {
                         <h4 className="text-[var(--color-charcoal)]/70 font-bold mb-1 uppercase tracking-widest text-xs">Facility Address</h4>
                         <p className="text-gray-700 text-sm leading-relaxed">
                             MAXPIX Advertising LLC<br />
-                            Warehouse 4, Street 22<br />
-                            Al Qusais Industrial Area 1<br />
+
+
                             Dubai, United Arab Emirates
                         </p>
                     </div>
@@ -37,7 +37,7 @@ const ContactInfo = () => {
                     <div>
                         <h4 className="text-[var(--color-charcoal)]/70 font-bold mb-1 uppercase tracking-widest text-xs">Direct Lines</h4>
                         <div className="flex flex-col gap-1 text-gray-700 text-sm">
-                            <a href="tel:+97144528333" className="hover:text-[var(--color-primary-red)] transition-colors">+971 4 452 8333 (Office)</a>
+                            <a href="tel:+971585898520" className="hover:text-[var(--color-primary-red)] transition-colors">+971 58 589 8520 (Office)</a>
                             <a href="tel:+971585100816" className="hover:text-[var(--color-primary-red)] transition-colors">+971 58 510 0816 (Mobile)</a>
                         </div>
                     </div>

@@ -31,9 +31,9 @@ const AboutHero = () => {
                     <h1 className="text-[14vw] font-black leading-none tracking-tighter text-outline-dark mix-blend-screen opacity-50 absolute -top-16 md:-top-24 left-1/2 -translate-x-1/2 pointer-events-none w-full text-center selection:bg-transparent">
                         WE ARE
                     </h1>
-                    <h2 className="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-tighter mix-blend-difference relative z-10 mt-8 md:mt-12 w-full text-center">
-                        DUBAI'S LEADING <br />
-                        <span className="text-[var(--color-primary-red)]">CREATIVE AGENCY.</span>
+                    <h2 className="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-tighter mix-blend-difference relative z-10 mt-8 md:mt-12 w-full text-center uppercase">
+                        DUBAI'S PREMIER <br />
+                        <span className="text-[var(--color-primary-red)]">EXHIBITION STAND BUILDER</span>
                     </h2>
                 </motion.div>
 
@@ -44,7 +44,7 @@ const AboutHero = () => {
                     className="mt-16 max-w-2xl mx-auto"
                 >
                     <p className="text-gray-400 text-lg md:text-xl font-light">
-                        Dubai's premier destination for high-end branding, architectural signage, and premium fabrication. We transform the physical and digital landscape of elite brands across the Middle East.
+                        The UAE's leading choice for custom signage fabrication, large format printing, and exhibition management. We deliver world-class creative production and branding solutions for elite brands across Dubai & the Middle East.
                     </p>
                 </motion.div>
             </motion.div>

@@ -6,23 +6,46 @@ const HeroSection = () => {
     const containerRef = useRef(null);
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    // BACKGROUND IMAGES - User will replace these with uploaded images
-    // Example if you named them 1.jpg, 2.jpg... inside a 'hero' folder
-    const images = [
-        "/hero/1.jpg",
-        "/hero/2.jpg",
-        "/hero/3.jpg",
-        "/hero/4.jpg",
-        "/hero/5.jpg"
+    // BACKGROUND SLIDES
+    const slides = [
+        {
+            url: "/hero/1.jpg",
+            caption: "The UAE's Premium Creative Agency",
+            title: <>Custom Exhibition Stand Builders & Contractors in <br /> Dubai, UAE</>,
+            description: "Top-rated exhibition stand design and build company in Dubai offering custom booth fabrication, modular exhibition stands, LED walls, and turnkey trade show solutions across UAE."
+        },
+        {
+            url: "/hero/2.jpg",
+            caption: "Innovative Signage Solutions",
+            title: <>Turnkey Exhibition Stand Design, Fabrication & Event Production Services in  <br /> Dubai, UAE</>,
+            description: "Professional exhibition stand design and build company in Dubai specializing in custom booth fabrication, modular stands, LED walls, and full-service event production across UAE."
+        },
+        {
+            url: "/hero/3.jpg",
+            caption: "Strategic Brand Identity",
+            title: <>Corporate Events & Live Stage Production Services Across  <br /> Dubai, UAE</>,
+            description: "Dubai-based corporate event production company providing full-service event planning, stage design, audio-visual production, exhibition management, and logistics solutions in UAE."
+        },
+        {
+            url: "/hero/4.jpg",
+            caption: "Advanced Fabrication",
+            title: <>Bespoke Custom Stand Design that define  <br />your brand</>,
+            description: "Custom-designed exhibition stands that transform your brand into a powerful trade show experience, integrating creative booth design, innovative display solutions, and premium stand fabrication for maximum impact."
+        },
+        {
+            url: "/hero/5.jpg",
+            caption: "Your Vision, Our Reality",
+            title: <>Professional Exhibition Stand Fabrication Company in  <br />Dubai, UAE</>,
+            description: "Precision Fabrication for High-Impact Exhibition & Brand Environments in UAE."
+        }
     ];
-
 
     useEffect(() => {
         const timer = setInterval(() => {
-            setCurrentIndex((prev) => (prev + 1) % images.length);
+            setCurrentIndex((prev) => (prev + 1) % slides.length);
         }, 6000); // 6 seconds per slide
         return () => clearInterval(timer);
-    }, [images.length]);
+    }, [slides.length]);
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -43,9 +66,9 @@ const HeroSection = () => {
                         initial={{ opacity: 0, scale: 1.1 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 2.5, ease: "easeInOut" }}
+                        transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                        style={{ backgroundImage: `url(${images[currentIndex]})` }}
+                        style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
                     />
                 </AnimatePresence>
             </div>
@@ -60,38 +83,32 @@ const HeroSection = () => {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#0a0a0a_90%)] z-10 pointer-events-none" />
 
             {/* Main Content */}
-            <motion.div style={{ y: y1, opacity: opacityTransform, scale: scaleTransform }} className="relative z-20 flex flex-col items-center justify-center text-center px-4 w-full">
-                <motion.div
-                    initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
-                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                >
-                    <p className="text-[var(--color-primary-red)] font-bold tracking-[0.3em] uppercase text-xs md:text-sm mb-6 drop-shadow-md">
-                        The UAE's Premium Creative Agency
-                    </p>
-                    <h1 className="text-5xl md:text-7xl lg:text-[7vw] font-black text-white leading-[0.9] tracking-tighter mb-6 relative drop-shadow-2xl">
-                        WE ENGINEER <br />
-                        <span
-                            className="inline-block"
-                            style={{
-                                WebkitTextStroke: '2px rgba(255, 255, 255, 0.5)',
-                                color: 'rgba(255, 255, 255, 0.1)',
-                                textShadow: '0 0 40px rgba(255, 255, 255, 0.15)'
-                            }}
+            <motion.div
+                style={{ y: y1, opacity: opacityTransform, scale: scaleTransform }}
+                className="relative z-20 flex flex-col items-center justify-center text-center px-4 w-full h-full"
+            >
+                <div className="relative w-full max-w-6xl h-[400px] flex items-center justify-center">
+                    <AnimatePresence>
+                        <motion.div
+                            key={currentIndex}
+                            initial={{ opacity: 0, y: 30, scale: 0.95, filter: "blur(20px)" }}
+                            animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+                            exit={{ opacity: 0, y: -20, scale: 1.05, filter: "blur(20px)" }}
+                            transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
+                            className="absolute inset-0 flex flex-col items-center justify-center"
                         >
-                            ATTENTION.
-                        </span>
-                    </h1>
-                </motion.div>
-
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.8 }}
-                    className="text-gray-100/80 text-lg md:text-xl max-w-2xl font-light drop-shadow-lg"
-                >
-                    Bridging the gap between visionary design and flawless physical fabrication. Branding, signage & monumental structures.
-                </motion.p>
+                            <p className="text-[var(--color-primary-red)] font-bold tracking-[0.3em] uppercase text-xs md:text-sm mb-6 drop-shadow-md">
+                                {slides[currentIndex].caption}
+                            </p>
+                            <h1 className="text-4xl md:text-6xl lg:text-[5.5vw] font-black text-white leading-[0.9] tracking-tighter mb-6 relative drop-shadow-2xl">
+                                {slides[currentIndex].title}
+                            </h1>
+                            <p className="text-gray-100/80 text-base md:text-lg max-w-2xl font-light drop-shadow-lg mx-auto">
+                                {slides[currentIndex].description}
+                            </p>
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
             </motion.div>
 
             {/* Scroll Down Island Indicator */}

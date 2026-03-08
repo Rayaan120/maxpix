@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const CategoriesGrid = () => {
     const [active, setActive] = useState(0);
@@ -11,35 +12,40 @@ const CategoriesGrid = () => {
             desc: "We don't just build booths; we architect immersive brand environments. Our in-house production facility in the UAE ensures every millimeter of your stand reflects the precision of your brand.",
             list: ["Custom Booth Design & 3D Visualization", "Modular & Double-Deck Stand Construction", "LED Walls & Interactive Display Integration", "On-Site Installation & Dismantling Services"],
             image: "/services/exhibition.jpg",
-            color: "#E60000"
+            color: "#E60000",
+            slug: "exhibition-stand-design"
         },
         {
             title: "Event Management",
             desc: "From concept to curtain call, we manage every detail of your corporate presence. Our team specializes in high-stakes gala dinners and large-scale trade show logistics.",
             list: ["Corporate Events & Gala Dinners", "Exhibition & Trade Show Management", "Stage Design & Audio-Visual Production", "Venue Coordination & Logistics Management"],
             image: "/services/event.jpg",
-            color: "#1a1a1a"
+            color: "#1a1a1a",
+            slug: "event-management"
         },
         {
             title: "Digital Printing",
             desc: "High-definition visual impact that demands attention. We utilize cutting-edge printing technology to produce massive outdoor backdrops and pixel-perfect indoor graphics.",
             list: ["Banners, Backdrops & Roll-Up Stands", "Outdoor & Indoor Signage Printing", "Vehicle Branding & Vinyl Graphics", "Exhibition Graphics & Display Panels"],
             image: "/services/printing.jpg",
-            color: "#333"
+            color: "#333",
+            slug: "digital-printing"
         },
         {
             title: "Vehicle Graphics",
             desc: "Turn your fleet into a mobile advertising powerhouse. Our professional wrapping service ensures durability and brand consistency across every commercial vehicle.",
             list: ["Full & Partial Vehicle Wraps", "Fleet Branding & Corporate Decals", "Reflective & Safety Vinyl Graphics", "Custom Design, Printing & Installation"],
             image: "/services/vehicle.jpg",
-            color: "#222"
+            color: "#222",
+            slug: "vehicle-graphics"
         },
         {
             title: "Signage & Wayfinding",
             desc: "Visual landmarks that define your physical presence. We fabricate everything from 3D illuminated channel letters to sophisticated architectural wayfinding systems.",
             list: ["3D Illuminated Channel Letters", "Acrylic, Metal & LED Signboards", "Indoor & Outdoor Directional Signage", "Design, Fabrication & Professional Installation"],
             image: "/services/signage.jpg",
-            color: "#E60000"
+            color: "#E60000",
+            slug: "signage-and-wayfinding"
         }
     ];
 
@@ -118,22 +124,30 @@ const CategoriesGrid = () => {
                                     animate={{ y: isActive ? 0 : 40, opacity: isActive ? 1 : 0 }}
                                     transition={{ duration: 0.8, ease: "easeOut" }}
                                 >
-                                    <div className="bg-[var(--color-primary-red)] w-16 h-1.5 mb-6" />
-                                    <h4 className="text-3xl md:text-5xl lg:text-7xl font-black text-white tracking-tighter leading-[1.1] mb-6 max-w-4xl drop-shadow-2xl">
+                                    <div className="bg-[var(--color-primary-red)] w-16 h-1.5 mb-4" />
+                                    <h4 className="text-3xl md:text-5xl lg:text-7xl font-black text-white tracking-tighter leading-[1.1] mb-4 max-w-4xl drop-shadow-2xl">
                                         {cat.title}
                                     </h4>
-                                    <p className="text-gray-300 text-sm md:text-lg lg:text-xl font-light leading-relaxed mb-8 max-w-2xl hidden md:block drop-shadow-lg">
+                                    <p className="text-gray-300 text-sm md:text-lg lg:text-xl font-light leading-relaxed mb-6 max-w-2xl hidden md:block drop-shadow-lg">
                                         {cat.desc}
                                     </p>
 
-                                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 mb-8 max-w-3xl hidden sm:grid">
+                                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 mb-6 max-w-3xl hidden sm:grid">
                                         {cat.list.map((item, i) => (
-                                            <li key={i} className="flex items-center gap-4 text-white/90 text-sm md:text-base font-medium">
+                                            <li key={i} className="flex items-center gap-3 text-white/90 text-sm md:text-base font-medium">
                                                 <div className="w-2 h-2 rounded-full bg-[var(--color-primary-red)] shrink-0 shadow-[0_0_10px_rgba(230,0,0,1)]" />
                                                 <span className="drop-shadow-md">{item}</span>
                                             </li>
                                         ))}
                                     </ul>
+
+                                    <Link
+                                        to={`/services/${cat.slug}`}
+                                        className="inline-flex items-center justify-center gap-3 bg-white/10 hover:bg-[var(--color-primary-red)] border border-white/20 hover:border-[var(--color-primary-red)] text-white px-8 py-3.5 rounded-full font-bold uppercase tracking-widest text-sm transition-all duration-300 w-fit group/btn backdrop-blur-sm shadow-[0_10px_30px_rgba(0,0,0,0.2)]"
+                                    >
+                                        View More
+                                        <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
+                                    </Link>
                                 </motion.div>
                             </div>
                         </div>

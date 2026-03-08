@@ -19,7 +19,7 @@ const KeyStats = () => {
     ];
 
     return (
-        <section ref={containerRef} className="py-32 bg-[var(--color-warm-gray)] relative overflow-hidden flex flex-col items-center justify-center">
+        <section ref={containerRef} className="py-12 md:py-16 bg-[var(--color-warm-gray)] relative overflow-hidden flex flex-col items-center justify-center">
             {/* Background massive stroke text moving with scroll */}
             <motion.div style={{ x: x1 }} className="absolute whitespace-nowrap opacity-10 pointer-events-none top-10">
                 <h2 className="text-[15vw] font-black text-outline-dark tracking-tighter">

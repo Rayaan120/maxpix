@@ -16,9 +16,9 @@ const Process = () => {
     ];
 
     return (
-        <section ref={containerRef} className="pt-32 pb-10 bg-[var(--color-warm-gray)] relative">
+        <section ref={containerRef} className="pt-16 md:pt-20 pb-10 bg-[var(--color-warm-gray)] relative">
             <div className="container mx-auto px-6 md:px-12">
-                <div className="text-left mb-20 max-w-3xl">
+                <div className="text-left mb-10 md:mb-12 max-w-3xl">
                     <h2 className="text-[var(--color-primary-red)] font-bold uppercase tracking-[0.2em] mb-4 text-sm">Execution Engine</h2>
                     <h3 className="text-5xl md:text-6xl font-black tracking-tighter text-[var(--color-charcoal)] leading-tight">
                         How we turn raw concepts into physical reality.
@@ -34,7 +34,7 @@ const Process = () => {
                         />
                     </div>
 
-                    <div className="flex flex-col gap-24">
+                    <div className="flex flex-col gap-12 md:gap-16">
                         {steps.map((step, idx) => (
                             <ProcessStep key={step.num} step={step} index={idx} />
                         ))}

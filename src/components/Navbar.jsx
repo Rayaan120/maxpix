@@ -44,8 +44,8 @@ const Navbar = () => {
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     className={`flex items-center justify-between gap-6 md:gap-12 px-2 py-2 rounded-full transition-all duration-700 ${isScrolled
-                            ? 'bg-black/70 backdrop-blur-2xl border border-white/10 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)]'
-                            : 'bg-black/20 backdrop-blur-md border border-white/5'
+                        ? 'bg-black/70 backdrop-blur-2xl border border-white/10 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)]'
+                        : 'bg-black/20 backdrop-blur-md border border-white/5'
                         }`}
                 >
                     {/* Logo */}

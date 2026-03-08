@@ -12,13 +12,13 @@ const WhyChooseUs = () => {
     const y2 = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
     return (
-        <section ref={containerRef} className="pt-24 md:pt-32 pb-8 md:pb-12 bg-[#f2f0eb] relative overflow-hidden">
+        <section ref={containerRef} className="py-10 md:py-14 bg-[#f2f0eb] relative overflow-hidden">
             {/* Abstract Parallax Elements - Higher contrast for premium feel */}
             <motion.div style={{ y: y1 }} className="absolute -left-20 top-20 w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] bg-white opacity-50 rounded-full blur-[120px] pointer-events-none" />
             <motion.div style={{ y: y2 }} className="absolute -right-20 bottom-20 w-[30vw] h-[30vw] max-w-[400px] max-h-[400px] bg-[var(--color-primary-red)]/5 rounded-full blur-[100px] z-0 pointer-events-none" />
 
             <div className="container mx-auto px-6 md:px-12 relative z-10">
-                <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-32">
+                <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
 
                     {/* Text Content */}
                     <div className="lg:w-1/2 w-full">
@@ -28,7 +28,7 @@ const WhyChooseUs = () => {
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
                         >
-                            <h2 className="text-5xl md:text-8xl font-black text-[#0a0a0a] leading-[0.85] tracking-tighter mb-10">
+                            <h2 className="text-5xl md:text-8xl font-black text-[#0a0a0a] leading-[0.85] tracking-tighter mb-6">
                                 WHY <br />
                                 <span
                                     className="text-outline-dark block"
@@ -41,7 +41,7 @@ const WhyChooseUs = () => {
                                 </span>
                                 WITH US?
                             </h2>
-                            <p className="text-xl text-gray-600 font-light leading-relaxed mb-12 max-w-xl">
+                            <p className="text-xl text-gray-600 font-light leading-relaxed mb-8 max-w-xl">
                                 We own the entire process. No outsourcing, no excuses. From the moment you hand us the brief to the final safety sign-off, MAXPIX controls every millimeter of the production lifecycle.
                             </p>
 
@@ -81,7 +81,7 @@ const WhyChooseUs = () => {
                             className="absolute -bottom-8 left-8 right-8 md:right-auto md:-left-16 md:bottom-12 z-20 bg-white/90 backdrop-blur-2xl border border-white p-8 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] md:max-w-xs"
                         >
                             <h4 className="font-black text-xl mb-2 text-[#0a0a0a] uppercase tracking-tighter">The MAXPIX Standard</h4>
-                            <p className="text-sm text-gray-500 leading-relaxed font-light">ISO certified manufacturing processes ensuring absolute durability in harsh GCC climates.</p>
+                            <p className="text-sm text-gray-500 leading-relaxed font-light">Advanced manufacturing processes ensuring durability in demanding GCC climate conditions.</p>
                         </motion.div>
                     </motion.div>
 

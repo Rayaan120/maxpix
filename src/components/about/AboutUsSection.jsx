@@ -2,9 +2,9 @@ import { motion } from 'framer-motion';
 
 const AboutUsSection = () => {
     return (
-        <section className="py-24 md:py-32 bg-white relative z-30 -mt-16 rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
+        <section className="py-8 md:py-12 bg-white relative z-30 -mt-16 rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
             <div className="container mx-auto px-6 md:px-12">
-                <div className="flex flex-col lg:flex-row gap-16 items-center">
+                <div className="flex flex-col lg:flex-row gap-8 md:gap-12 items-center">
                     {/* Image Column */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
@@ -31,7 +31,7 @@ const AboutUsSection = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-[var(--color-primary-red)] font-bold tracking-[0.3em] uppercase text-sm mb-6"
+                            className="text-[var(--color-primary-red)] font-bold tracking-[0.3em] uppercase text-sm mb-4"
                         >
                             Who We Are
                         </motion.span>
@@ -40,7 +40,7 @@ const AboutUsSection = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="text-4xl md:text-6xl font-black text-[var(--color-charcoal)] leading-[1.1] tracking-tighter mb-8"
+                            className="text-4xl md:text-6xl font-black text-[var(--color-charcoal)] leading-[1.1] tracking-tighter mb-4"
                         >
                             Bridging the gap between <br />
                             Vision and Reality.
@@ -51,14 +51,14 @@ const AboutUsSection = () => {
                             viewport={{ once: true }}
                             transition={{ delay: 0.4 }}
                         >
-                            <p className="text-gray-600 text-lg md:text-xl leading-relaxed mb-6 font-light">
+                            <p className="text-gray-600 text-lg md:text-xl leading-relaxed mb-4 font-light">
                                 Maxpix Advertising LLC is a leading Dubai-based exhibition stand design company specializing in custom booth fabrication, corporate event management, and high-resolution digital printing services.
                             </p>
-                            <p className="text-gray-600 text-lg md:text-xl leading-relaxed mb-10 font-light">
+                            <p className="text-gray-600 text-lg md:text-xl leading-relaxed mb-6 font-light">
                                 We provide end-to-end branding solutions, including creative concept development, 3D stand design, production, installation, and on-site execution—helping businesses maximize visibility, strengthen brand presence, and deliver impactful experiences at trade shows, exhibitions, and corporate events across the UAE.
                             </p>
 
-                            <div className="grid grid-cols-2 gap-8 py-8 border-t border-gray-100 w-full">
+                            <div className="grid grid-cols-2 gap-8 pt-6 pb-2 border-t border-gray-100 w-full">
                                 <div>
                                     <h4 className="text-3xl font-black text-[var(--color-charcoal)] mb-1 uppercase tracking-tighter">Production</h4>
                                     <p className="text-sm font-bold text-[var(--color-primary-red)] uppercase tracking-[0.2em]">In-House</p>

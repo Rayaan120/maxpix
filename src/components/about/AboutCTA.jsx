@@ -28,9 +28,9 @@ const AboutCTA = () => {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="relative z-10"
                 >
-                    <h2 className="text-[var(--color-primary-red)] text-sm font-bold uppercase tracking-[0.2em] mb-4">Let's Collaborate</h2>
-                    <h3 className="text-5xl md:text-7xl lg:text-[8vw] font-black text-white tracking-tighter leading-none mb-10 drop-shadow-2xl">
-                        BUILD YOUR <br />
+                    <h2 className="text-[var(--color-primary-red)] text-sm font-bold uppercase tracking-[0.2em] mb-4">Partner with the Experts</h2>
+                    <h3 className="text-5xl md:text-7xl lg:text-[7.5vw] font-black text-white tracking-tighter leading-none mb-10 drop-shadow-2xl uppercase">
+                        DUBAI'S BEST <br />
                         <span
                             className="inline-block"
                             style={{
@@ -39,17 +39,17 @@ const AboutCTA = () => {
                                 textShadow: '0 0 30px rgba(0, 0, 0, 0.2)'
                             }}
                         >
-                            LEGACY.
+                            STAND BUILDER
                         </span>
                     </h3>
-                    <p className="text-xl text-gray-400 font-light mb-12 max-w-2xl mx-auto italic">
-                        Partner with Dubai's leading creative production house to turn your architectural vision into reality.
+                    <p className="text-xl text-gray-400 font-light mb-12 max-w-2xl mx-auto tracking-tight">
+                        Looking for the most reliable exhibition stand designers in Dubai? From premium signage solutions to large format printing, we are your ultimate partner for high-impact branding in the UAE.
                     </p>
                     <Link
                         to="/contact"
                         className="inline-flex items-center justify-center px-12 py-5 bg-[var(--color-primary-red)] text-white font-bold text-lg md:text-xl rounded-full hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 shadow-[0_0_40px_rgba(230,0,0,0.3)]"
                     >
-                        Initiate Project
+                        Get a Free Quote
                     </Link>
                 </motion.div>
             </motion.div>

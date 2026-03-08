@@ -14,7 +14,7 @@ const ServicesPreview = () => {
     const y2 = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
     return (
-        <section ref={containerRef} className="py-24 md:py-40 bg-white relative overflow-hidden">
+        <section ref={containerRef} className="py-12 md:py-20 bg-white relative overflow-hidden">
             {/* Background Accent Text */}
             <div className="absolute top-20 left-0 w-full overflow-hidden pointer-events-none opacity-[0.03] select-none">
                 <h2 className="text-[25vw] font-black leading-none tracking-tighter whitespace-nowrap">
@@ -24,7 +24,7 @@ const ServicesPreview = () => {
 
             <div className="container mx-auto px-6 md:px-12 relative z-10">
                 {/* Header Section */}
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 md:mb-32 gap-10">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-16 gap-10">
                     <div className="max-w-3xl">
                         <motion.span
                             initial={{ opacity: 0, y: 20 }}
