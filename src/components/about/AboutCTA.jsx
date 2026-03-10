@@ -43,7 +43,7 @@ const AboutCTA = () => {
                         </span>
                     </h3>
                     <p className="text-xl text-gray-400 font-light mb-12 max-w-2xl mx-auto tracking-tight">
-                        Looking for the most reliable exhibition stand designers in Dubai? From premium signage solutions to large format printing, we are your ultimate partner for high-impact branding in the UAE.
+                        Looking for the most reliable exhibition stand builders in Dubai? From premium signage solutions to large format printing, we are your ultimate partner for high-impact branding in the UAE.
                     </p>
                     <Link
                         to="/contact"

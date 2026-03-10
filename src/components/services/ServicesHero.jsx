@@ -43,7 +43,7 @@ const ServicesHero = () => {
                     className="mt-12 max-w-3xl mx-auto"
                 >
                     <p className="text-gray-400 text-lg md:text-xl font-light leading-relaxed">
-                        The ultimate destination for exhibition stand builders in Dubai. We specialize in 3D signage fabrication, vehicle branding UAE, and large format digital printing to elevate your brand's presence across the Middle East.
+                        Your trusted partner for custom exhibition stand design and construction in Dubai. We create high-impact trade show booths and exhibition environments that elevate your brand presence across the Middle East.
                     </p>
                 </motion.div>
             </motion.div>

@@ -41,7 +41,7 @@ const PortfolioCTA = () => {
                         </span>
                     </h3>
                     <p className="text-xl text-gray-400 font-light mb-12 max-w-2xl mx-auto italic">
-                        From Burj Khalifa-scale branding to boutique retail interiors, let's discuss your next milestone project.
+                        From large-scale event branding to high-impact exhibition environments, let’s discuss your next milestone project.
                     </p>
                     <Link
                         to="/contact"
