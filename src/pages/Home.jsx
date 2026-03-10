@@ -6,6 +6,7 @@ import FeaturedPortfolio from '../components/home/FeaturedPortfolio';
 import Process from '../components/home/Process';
 import TrustBar from '../components/home/TrustBar';
 import CTABanner from '../components/home/CTABanner';
+import TestimonialsSection from '../components/home/TestimonialsSection';
 
 const Home = () => {
     return (
@@ -34,6 +35,7 @@ const Home = () => {
             <TrustBar />
             <ServicesPreview />
             <FeaturedPortfolio />
+            <TestimonialsSection />
             <Process />
             <CTABanner />
         </>
