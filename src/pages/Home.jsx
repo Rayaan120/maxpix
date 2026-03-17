@@ -31,11 +31,11 @@ const Home = () => {
             />
 
             <HeroSection />
-            <KeyStats />
-            <TrustBar />
             <ServicesPreview />
             <FeaturedPortfolio />
             <TestimonialsSection />
+            <KeyStats />
+            <TrustBar />
             <Process />
             <CTABanner />
         </>

@@ -79,8 +79,9 @@ const HeroSection = () => {
             {/* Dark Overlay for Readability */}
             <div className="absolute inset-0 bg-black/40 z-5" />
 
-            {/* Heavy Vignette */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#0a0a0a_90%)] z-10 pointer-events-none" />
+            {/* Red Side Shades */}
+            <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[var(--color-primary-red)]/40 to-transparent z-10 pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-[var(--color-primary-red)]/40 to-transparent z-10 pointer-events-none" />
 
             {/* Main Content */}
             <motion.div
