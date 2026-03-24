@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useLayoutEffect } from 'react';
 
 const OurStory = () => {
     const containerRef = useRef(null);
@@ -7,6 +7,15 @@ const OurStory = () => {
         target: containerRef,
         offset: ["start end", "end start"]
     });
+
+    const [isMobile, setIsMobile] = useState(false);
+
+    useLayoutEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
@@ -27,11 +36,11 @@ const OurStory = () => {
                         </motion.h2>
 
                         <motion.h3
-                            initial={{ opacity: 0, x: -30 }}
+                            initial={{ opacity: 0, x: isMobile ? -20 : -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: 0.1 }}
-                            className="text-5xl md:text-6xl lg:text-7xl font-black text-[var(--color-charcoal)] leading-[1.1] tracking-tighter mb-4"
+                            transition={{ delay: 0.1, duration: 0.6 }}
+                            className="text-5xl md:text-6xl lg:text-7xl font-black text-[var(--color-charcoal)] leading-[1.1] tracking-tighter mb-4 will-change-transform transform-gpu"
                         >
                             Engineering <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-charcoal)] to-gray-400">
@@ -71,8 +80,8 @@ const OurStory = () => {
                     </div>
 
                     {/* Right: Abstract Cinematic Visuals */}
-                    <div className="relative h-[500px] md:h-[600px] w-full rounded-tl-[4rem] rounded-br-[4rem] overflow-hidden group shadow-2xl">
-                        <motion.div style={{ y }} className="absolute inset-0 -top-20 -bottom-20">
+                    <div className={`relative h-[500px] md:h-[600px] w-full ${isMobile ? 'rounded-2xl' : 'rounded-tl-[4rem] rounded-br-[4rem] shadow-2xl'} overflow-hidden group`}>
+                        <motion.div style={isMobile ? { y: 0 } : { y }} className="absolute inset-0 -top-20 -bottom-20 will-change-transform transform-gpu">
                             <img
                                 src="/hero/2.jpg"
                                 alt="Premium Exhibition Stand Fabrication and Design in UAE"
@@ -83,11 +92,11 @@ const OurStory = () => {
 
                         {/* Glassmorphism Badge */}
                         <motion.div
-                            initial={{ opacity: 0, x: 50 }}
+                            initial={{ opacity: 0, x: isMobile ? 20 : 50 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.5 }}
-                            className="absolute bottom-8 right-8 left-8 md:left-auto bg-black/40 backdrop-blur-xl border border-white/20 p-8 rounded-2xl md:min-w-[300px]"
+                            className={`absolute bottom-8 right-8 left-8 md:left-auto bg-black border border-white/20 p-8 rounded-2xl md:min-w-[300px] will-change-transform transform-gpu ${isMobile ? '' : 'backdrop-blur-xl'}`}
                         >
                             <div className="text-white text-3xl font-black tracking-tight mb-2">Unmatched Scale</div>
                             <div className="text-white/80 text-xs font-bold uppercase tracking-[0.2em] leading-relaxed">

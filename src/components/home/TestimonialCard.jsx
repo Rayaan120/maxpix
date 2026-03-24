@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const StarIcon = () => (
@@ -14,14 +14,24 @@ const QuoteIcon = () => (
 );
 
 const TestimonialCard = ({ testimonial }) => {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useLayoutEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     return (
         <motion.div
             variants={{
                 hidden: { opacity: 0, y: 50 },
                 visible: { opacity: 1, y: 0 }
             }}
-            transition={{ type: "spring", stiffness: 100, damping: 20 }}
-            className="relative bg-white p-8 rounded-2xl shadow-lg border border-gray-100 group transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl flex flex-col h-full"
+            transition={isMobile ? { duration: 0 } : { type: "spring", stiffness: 100, damping: 20 }}
+            className={`relative bg-white p-8 rounded-2xl border border-gray-100 group transition-all duration-300 flex flex-col h-full will-change-transform transform-gpu ${isMobile ? '' : 'shadow-lg hover:-translate-y-2 hover:shadow-2xl'
+                }`}
         >
             <QuoteIcon />
             {/* Rating */}

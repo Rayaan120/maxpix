@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const CTABanner = () => {
@@ -9,22 +9,39 @@ const CTABanner = () => {
         offset: ["start end", "end end"]
     });
 
+    const [isMobile, setIsMobile] = useState(false);
+
+    useLayoutEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
     const borderRadius = useTransform(scrollYProgress, [0, 1], ["50%", "0%"]);
+
+    // On mobile, use explicit static values to avoid getting "stuck" in the initial 0.8 / 50% state
+    const motionStyle = isMobile ? { scale: 1, borderRadius: "0px" } : { scale, borderRadius };
 
     return (
         <section ref={containerRef} className="pt-10 md:pt-16 pb-0 bg-[var(--color-warm-gray)] relative overflow-hidden">
             <motion.div
-                style={{ scale, borderRadius }}
-                className="bg-[var(--color-primary-red)] w-full h-[60vh] md:h-[80vh] flex flex-col items-center justify-center text-center p-6 relative overflow-hidden origin-bottom"
+                style={motionStyle}
+                className={`bg-[var(--color-primary-red)] w-full h-[60vh] md:h-[80vh] flex flex-col items-center justify-center text-center p-6 relative overflow-hidden origin-bottom will-change-transform transform-gpu ${isMobile ? 'rounded-none' : ''
+                    }`}
             >
-                {/* Abstract shapes */}
-                <div className="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none" />
-                <div className="absolute bottom-10 right-10 w-96 h-96 bg-black/10 rounded-full blur-3xl pointer-events-none" />
+                {/* Abstract shapes - Hidden on mobile for performance */}
+                {!isMobile && (
+                    <>
+                        <div className="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+                        <div className="absolute bottom-10 right-10 w-96 h-96 bg-black/10 rounded-full blur-3xl pointer-events-none" />
+                    </>
+                )}
 
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                    whileInView={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="relative z-10"
                 >

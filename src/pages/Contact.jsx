@@ -14,9 +14,9 @@ const Contact = () => {
 
             <ContactHero />
 
-            <section className="py-24 bg-[var(--color-warm-gray)]">
+            <section className="py-12 md:py-24 bg-[var(--color-warm-gray)]">
                 <div className="container mx-auto px-6 md:px-12">
-                    <div className="grid lg:grid-cols-5 gap-16">
+                    <div className="grid lg:grid-cols-5 gap-8 lg:gap-16">
                         <div className="lg:col-span-3 order-2 lg:order-1">
                             <ContactForm />
                         </div>

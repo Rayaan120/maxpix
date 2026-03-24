@@ -1,11 +1,26 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { useRef, useState, useLayoutEffect } from 'react';
 
 const ProcessStrip = () => {
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start start", "end end"]
+    });
+
+    const [isMobile, setIsMobile] = useState(false);
+
+    useLayoutEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    const smoothProgress = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
     });
 
     const steps = [
@@ -16,9 +31,9 @@ const ProcessStrip = () => {
     ];
 
     return (
-        <section ref={containerRef} className="py-20 relative bg-[#0a0a0a] min-h-[400vh]">
+        <section ref={containerRef} className="pt-0 pb-12 md:pb-16 relative bg-[#0a0a0a] min-h-[400vh]">
 
-            <div className="sticky top-0 h-[100dvh] w-full flex flex-col justify-center overflow-hidden pt-[100px] pb-8 md:pb-12">
+            <div className="sticky top-0 h-[100dvh] w-full flex flex-col justify-center overflow-hidden pt-[20px] md:pt-[40px] pb-8 md:pb-12">
                 <div className="container mx-auto px-6 md:px-12 relative z-20">
                     <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter mb-8 md:mb-12 text-center">
                         THE <span className="text-[var(--color-primary-red)]">METHOD.</span>
@@ -32,11 +47,11 @@ const ProcessStrip = () => {
 
                             // Scale down slightly as scroll continues after the card has arrived
                             const targetScale = 1 - ((steps.length - 1 - idx) * 0.03);
-                            const stepScale = useTransform(scrollYProgress, [start, 1], [1, targetScale]);
+                            const stepScale = useTransform(isMobile ? smoothProgress : scrollYProgress, [start, 1], [1, targetScale]);
 
                             // Move from bottom (100%) to top (0%) during its window
-                            const yOffset = useTransform(scrollYProgress, [start - 0.1, start], ["100%", "0%"]);
-                            const opacity = useTransform(scrollYProgress, [start - 0.1, start], [0, 1]);
+                            const yOffset = useTransform(isMobile ? smoothProgress : scrollYProgress, [start - 0.1, start], ["100%", "0%"]);
+                            const opacity = useTransform(isMobile ? smoothProgress : scrollYProgress, [start - 0.1, start], [0, 1]);
 
                             return (
                                 <motion.div
@@ -49,7 +64,7 @@ const ProcessStrip = () => {
                                         backgroundColor: step.color,
                                         transformOrigin: 'top center'
                                     }}
-                                    className="absolute inset-0 w-full h-full rounded-[2rem] p-8 md:p-12 shadow-2xl flex flex-col justify-between border border-white/5 overflow-hidden"
+                                    className="absolute inset-0 w-full h-full rounded-[2rem] p-8 md:p-12 shadow-2xl flex flex-col justify-between border border-white/5 overflow-hidden will-change-transform transform-gpu"
                                 >
                                     {/* Glass reflection effect */}
                                     <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
@@ -58,7 +73,7 @@ const ProcessStrip = () => {
                                         <span className={`text-6xl md:text-8xl font-black ${idx === steps.length - 1 ? 'text-white' : 'text-white/10'}`}>
                                             {step.num}
                                         </span>
-                                        {idx === steps.length - 1 && (
+                                        {idx === steps.length - 1 && !isMobile && (
                                             <div className="w-4 h-4 rounded-full bg-white animate-pulse" />
                                         )}
                                     </div>
@@ -74,10 +89,12 @@ const ProcessStrip = () => {
                     </div>
                 </div>
 
-                {/* Background Typography */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center z-0 pointer-events-none opacity-5">
-                    <h2 className="text-[20vw] font-black leading-none text-white tracking-tighter mix-blend-overlay">PROCESS</h2>
-                </div>
+                {/* Background Typography - Disabled on Mobile */}
+                {!isMobile && (
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center z-0 pointer-events-none opacity-5">
+                        <h2 className="text-[20vw] font-black leading-none text-white tracking-tighter mix-blend-overlay">PROCESS</h2>
+                    </div>
+                )}
             </div>
 
         </section>

@@ -50,7 +50,7 @@ const CategoriesGrid = () => {
     ];
 
     return (
-        <section className="bg-[var(--color-warm-gray)] py-24 md:py-32 relative z-10 -mt-[3rem] rounded-t-[3rem] overflow-hidden">
+        <section className="bg-[var(--color-warm-gray)] pt-24 pb-12 md:pt-32 md:pb-16 relative z-10 -mt-[3rem] rounded-t-[3rem] overflow-hidden">
             <div className="container mx-auto px-6 md:px-12 mb-12 relative z-10 flex flex-col md:flex-row justify-between items-end gap-8">
                 <div>
                     <motion.span

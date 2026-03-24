@@ -38,26 +38,26 @@ const Navbar = () => {
 
     return (
         <>
-            <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-700 w-[92%] md:w-auto">
+            <header className="fixed top-0 md:top-6 left-0 md:left-1/2 md:-translate-x-1/2 z-50 transition-all duration-700 w-full md:w-auto">
                 <motion.div
                     initial={{ y: -50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className={`flex items-center justify-between gap-6 md:gap-12 px-2 py-2 rounded-full transition-all duration-700 ${isScrolled
-                        ? 'bg-black/70 backdrop-blur-2xl border border-white/10 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)]'
-                        : 'bg-black/20 backdrop-blur-md border border-white/5'
+                    className={`flex items-center justify-between gap-6 md:gap-12 px-6 md:px-2 py-4 md:py-2 rounded-none md:rounded-full transition-all duration-700 ${isScrolled
+                        ? 'bg-black/80 backdrop-blur-3xl border-b md:border border-white/10 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)]'
+                        : 'bg-black/20 backdrop-blur-xl border-b md:border border-white/5'
                         }`}
                 >
                     {/* Logo */}
-                    <Link to="/" className="flex items-center gap-3 group pl-4">
+                    <Link to="/" className="flex items-center gap-3 group">
                         <motion.div
                             whileHover={{ rotate: 90 }}
                             transition={{ duration: 0.5, ease: "backOut" }}
-                            className="w-8 h-8 rounded-full bg-[var(--color-primary-red)] flex items-center justify-center text-white font-bold text-sm"
+                            className="w-10 h-10 md:w-8 md:h-8 rounded-full bg-[var(--color-primary-red)] flex items-center justify-center text-white font-bold text-sm md:text-xs shadow-[0_0_20px_rgba(230,0,0,0.3)]"
                         >
                             MA
                         </motion.div>
-                        <span className={`text-lg font-black tracking-tighter ${textColor} leading-none hidden sm:block pt-1`}>MAXPIX</span>
+                        <span className={`text-xl md:text-lg font-black tracking-tighter ${textColor} leading-none hidden sm:block pt-1`}>MAXPIX</span>
                     </Link>
 
                     {/* Desktop Nav with Magnetic Active State */}
@@ -88,7 +88,7 @@ const Navbar = () => {
                     </nav>
 
                     {/* CTA / Menu Button */}
-                    <div className="flex items-center gap-2 pr-2">
+                    <div className="flex items-center gap-2">
                         <Link
                             to="/contact"
                             className="hidden md:flex items-center gap-2 bg-white text-black px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-[var(--color-primary-red)] hover:text-white transition-all duration-300 shadow-lg"
@@ -97,10 +97,12 @@ const Navbar = () => {
                         </Link>
 
                         <button
-                            className={`md:hidden p-3 rounded-full bg-white/10 border border-white/10 backdrop-blur-md transition-colors hover:bg-white/20 ${textColor}`}
+                            className={`md:hidden p-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md transition-colors hover:bg-white/10 ${textColor}`}
                             onClick={() => setMobileMenuOpen(true)}
                         >
-                            <Menu size={20} />
+                            <div className="p-1">
+                                <Menu size={24} />
+                            </div>
                         </button>
                     </div>
                 </motion.div>
@@ -113,11 +115,11 @@ const Navbar = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="fixed inset-0 z-[100] bg-[#050505] flex flex-col justify-between px-8 py-12 overflow-hidden"
+                        transition={{ duration: 0.3 }}
+                        className="fixed inset-0 z-[100] bg-[#050505] flex flex-col justify-between px-8 py-12 overflow-hidden will-change-transform transform-gpu"
                     >
-                        {/* Background Accent */}
-                        <div className="absolute inset-0 aurora opacity-20 pointer-events-none" />
+                        {/* Background Accent - Simplified for Mobile Performance */}
+                        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-primary-red)]/10 to-transparent pointer-events-none" />
 
                         {/* Header */}
                         <div className="flex justify-between items-center relative z-10">
@@ -142,9 +144,10 @@ const Navbar = () => {
                                 return (
                                     <motion.li
                                         key={link.name}
-                                        initial={{ opacity: 0, y: 40 }}
+                                        initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 0.1 + (i * 0.1), duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                                        transition={{ delay: 0.05 + (i * 0.05), duration: 0.4, ease: "easeOut" }}
+                                        className="will-change-transform transform-gpu"
                                     >
                                         <button
                                             onClick={() => handleNavClick(link.path)}
@@ -174,7 +177,7 @@ const Navbar = () => {
                             </div>
                             <div>
                                 <p className="text-gray-500 text-xs font-bold uppercase tracking-widest mb-2">Call Us</p>
-                                <a href="tel:+97144528333" className="text-white text-sm hover:text-[var(--color-primary-red)] transition-colors">+971 4 452 8333</a>
+                                <a href="tel:+971585100816" className="text-white text-sm hover:text-[var(--color-primary-red)] transition-colors">+971 58 510 0816</a>
                             </div>
                         </motion.div>
                     </motion.div>

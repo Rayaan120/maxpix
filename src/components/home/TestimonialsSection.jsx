@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { motion } from 'framer-motion';
 import TestimonialCard from './TestimonialCard';
 
@@ -66,11 +66,21 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => {
-    // Duplicate the array to create a seamless infinite loop
-    const duplicatedTestimonials = [...testimonials, ...testimonials];
+    const [isMobile, setIsMobile] = useState(false);
+
+    useLayoutEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    // On mobile, use a smaller subset of testimonials for the marquee for better performance
+    const displayTestimonials = isMobile ? testimonials.slice(0, 5) : testimonials;
+    const duplicatedTestimonials = [...displayTestimonials, ...displayTestimonials];
 
     return (
-        <section className="py-24 bg-[var(--color-warm-gray)] relative overflow-hidden">
+        <section className="pt-24 pb-12 bg-[var(--color-warm-gray)] relative overflow-hidden">
             {/* Very subtle background pattern */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
 
@@ -104,7 +114,7 @@ const TestimonialsSection = () => {
                 <div className="absolute top-0 bottom-0 right-0 w-[15%] rounded-l-[50%] bg-gradient-to-l from-[var(--color-warm-gray)] to-transparent z-10 pointer-events-none"></div>
 
                 <motion.div
-                    className="flex shrink-0 gap-8 items-stretch pr-8"
+                    className="flex shrink-0 gap-8 items-stretch pr-8 will-change-transform transform-gpu"
                     animate={{
                         x: ['0%', '-50%']
                     }}

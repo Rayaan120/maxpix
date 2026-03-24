@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, CheckCircle2 } from 'lucide-react';
+import { Send, CheckCircle2, ChevronDown } from 'lucide-react';
 
 const ContactForm = () => {
     const [formData, setFormData] = useState({
@@ -66,11 +66,11 @@ const ContactForm = () => {
     }
 
     return (
-        <div className="bg-[#111] rounded-[2rem] p-8 md:p-12 border border-white/5 shadow-2xl relative overflow-hidden">
+        <div className="bg-[#111] rounded-[2rem] p-5 md:p-12 border border-white/5 shadow-2xl relative overflow-hidden">
             {/* Background Glow */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--color-primary-red)]/5 rounded-full blur-[80px] pointer-events-none" />
 
-            <div className="mb-10 relative z-10">
+            <div className="mb-6 md:mb-10 relative z-10">
                 <h3 className="text-3xl font-black text-white tracking-tighter mb-2">Project Brief</h3>
                 <p className="text-gray-400 text-sm">Provide the core details of your requirement below.</p>
             </div>
@@ -133,25 +133,31 @@ const ContactForm = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="flex flex-col gap-2">
                         <label className="text-xs font-bold uppercase tracking-widest text-gray-500">Primary Service *</label>
-                        <select
-                            name="service"
-                            value={formData.service}
-                            onChange={handleChange}
-                            className="bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--color-primary-red)] transition-colors appearance-none cursor-pointer"
-                        >
-                            {services.map(s => <option key={s} value={s} className="bg-[#111]">{s}</option>)}
-                        </select>
+                        <div className="relative">
+                            <select
+                                name="service"
+                                value={formData.service}
+                                onChange={handleChange}
+                                className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--color-primary-red)] transition-colors appearance-none cursor-pointer"
+                            >
+                                {services.map(s => <option key={s} value={s} className="bg-[#111]">{s}</option>)}
+                            </select>
+                            <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" size={16} />
+                        </div>
                     </div>
                     <div className="flex flex-col gap-2">
                         <label className="text-xs font-bold uppercase tracking-widest text-gray-500">Estimated Budget *</label>
-                        <select
-                            name="budget"
-                            value={formData.budget}
-                            onChange={handleChange}
-                            className="bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--color-primary-red)] transition-colors appearance-none cursor-pointer"
-                        >
-                            {budgets.map(b => <option key={b} value={b} className="bg-[#111]">{b}</option>)}
-                        </select>
+                        <div className="relative">
+                            <select
+                                name="budget"
+                                value={formData.budget}
+                                onChange={handleChange}
+                                className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[var(--color-primary-red)] transition-colors appearance-none cursor-pointer"
+                            >
+                                {budgets.map(b => <option key={b} value={b} className="bg-[#111]">{b}</option>)}
+                            </select>
+                            <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" size={16} />
+                        </div>
                     </div>
                 </div>
 

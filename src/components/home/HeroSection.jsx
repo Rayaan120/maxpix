@@ -92,9 +92,9 @@ const HeroSection = () => {
                     <AnimatePresence>
                         <motion.div
                             key={currentIndex}
-                            initial={{ opacity: 0, y: 30, scale: 0.95, filter: "blur(20px)" }}
-                            animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-                            exit={{ opacity: 0, y: -20, scale: 1.05, filter: "blur(20px)" }}
+                            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: -20, scale: 1.05 }}
                             transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
                             className="absolute inset-0 flex flex-col items-center justify-center"
                         >

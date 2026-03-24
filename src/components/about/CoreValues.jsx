@@ -1,7 +1,17 @@
 import { motion } from 'framer-motion';
+import { useState, useLayoutEffect } from 'react';
 import { Target, Shield, Zap, Users } from 'lucide-react';
 
 const CoreValues = () => {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useLayoutEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     return (
         <section className="py-32 bg-[#0a0a0a] text-white">
             <div className="container mx-auto px-6 md:px-12">
@@ -20,12 +30,12 @@ const CoreValues = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="md:col-span-2 relative group overflow-hidden rounded-[2rem] bg-[#111] p-10 flex flex-col justify-end min-h-[400px]"
+                        className="md:col-span-2 relative group overflow-hidden rounded-[2rem] bg-[#111] p-10 flex flex-col justify-end min-h-[400px] transform-gpu"
                     >
                         <div className="absolute inset-0 bg-gradient-to-tr from-[var(--color-primary-red)]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                         <Shield className="absolute top-10 right-10 text-white/5 w-64 h-64 group-hover:scale-110 transition-transform duration-700" />
 
-                        <div className="relative z-10 w-16 h-16 rounded-full border border-white/20 flex items-center justify-center text-[var(--color-primary-red)] bg-white/5 backdrop-blur-md mb-8">
+                        <div className={`relative z-10 w-16 h-16 rounded-full border border-white/20 flex items-center justify-center text-[var(--color-primary-red)] bg-white/5 mb-8`}>
                             <Shield size={32} />
                         </div>
                         <h4 className="text-4xl font-black tracking-tighter mb-4 relative z-10">Uncompromising Integrity</h4>
@@ -38,7 +48,7 @@ const CoreValues = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.1 }}
-                        className="relative group overflow-hidden rounded-[2rem] bg-[#111] p-10 flex flex-col justify-between"
+                        className="relative group overflow-hidden rounded-[2rem] bg-[#111] p-10 flex flex-col justify-between transform-gpu"
                     >
                         <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white bg-white/5 mb-8 group-hover:border-[var(--color-primary-red)] group-hover:text-[var(--color-primary-red)] transition-colors">
                             <Target size={24} />
@@ -78,7 +88,7 @@ const CoreValues = () => {
                         <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-[url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80')] bg-cover opacity-20 filter grayscale group-hover:grayscale-0 group-hover:opacity-40 transition-all duration-700 mix-blend-overlay" />
                         <div className="absolute inset-0 bg-gradient-to-r from-[#111] via-[#111]/80 to-transparent" />
 
-                        <div className="relative z-10 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white bg-white/5 backdrop-blur-md mb-6">
+                        <div className={`relative z-10 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white bg-white/5 mb-6 ${isMobile ? '' : 'backdrop-blur-md'}`}>
                             <Users size={24} />
                         </div>
                         <h4 className="text-4xl font-black tracking-tighter mb-4 relative z-10">Collaborative Partnership</h4>

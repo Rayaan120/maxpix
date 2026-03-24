@@ -1,19 +1,29 @@
 import { motion } from 'framer-motion';
+import { useState, useLayoutEffect } from 'react';
 
 const AboutUsSection = () => {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useLayoutEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     return (
-        <section className="py-8 md:py-12 bg-white relative z-30 -mt-16 rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
+        <section className={`py-8 md:py-12 bg-white relative z-30 -mt-10 md:-mt-16 ${isMobile ? '' : 'rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.1)]'}`}>
             <div className="container mx-auto px-6 md:px-12">
                 <div className="flex flex-col lg:flex-row gap-8 md:gap-12 items-center">
                     {/* Image Column */}
                     <motion.div
-                        initial={{ opacity: 0, x: -50 }}
+                        initial={{ opacity: 0, x: isMobile ? -20 : -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                        className="w-full lg:w-1/2 relative group"
+                        transition={{ duration: isMobile ? 0.6 : 0.8 }}
+                        className="w-full lg:w-1/2 relative group will-change-transform transform-gpu"
                     >
-                        <div className="aspect-[4/5] md:aspect-video lg:aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl relative">
+                        <div className={`aspect-[4/5] md:aspect-video lg:aspect-[4/5] rounded-2xl overflow-hidden relative ${isMobile ? '' : 'shadow-2xl'}`}>
                             <img
                                 src="/hero/6.jpg"
                                 alt="MAXPIX Workspace"
@@ -36,11 +46,11 @@ const AboutUsSection = () => {
                             Who We Are
                         </motion.span>
                         <motion.h2
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                            className="text-4xl md:text-6xl font-black text-[var(--color-charcoal)] leading-[1.1] tracking-tighter mb-4"
+                            transition={{ delay: 0.1, duration: 0.6 }}
+                            className="text-4xl md:text-6xl font-black text-[var(--color-charcoal)] leading-[1.1] tracking-tighter mb-4 will-change-transform transform-gpu"
                         >
                             Bridging the gap between <br />
                             Vision and Reality.

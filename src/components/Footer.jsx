@@ -1,20 +1,30 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useLayoutEffect } from 'react';
 import { Mail, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
     const container = useRef(null);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useLayoutEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 1024); // Footer parallax is heavy, disable on tablet too
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     const { scrollYProgress } = useScroll({
         target: container,
         offset: ["start end", "end end"]
     });
 
     const y = useTransform(scrollYProgress, [0, 1], [-200, 0]);
+    const motionStyle = isMobile ? { y: 0 } : { y };
 
     return (
         <footer ref={container} className="relative bg-[#0a0a0a] text-white overflow-hidden clip-path-footer">
-            <motion.div style={{ y }} className="w-full relative min-h-screen flex flex-col justify-end pt-32 pb-8">
+            <motion.div style={motionStyle} className="w-full relative min-h-screen flex flex-col justify-end pt-32 pb-8 will-change-transform transform-gpu">
 
                 {/* Glow Effects */}
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[500px] bg-[var(--color-primary-red)]/20 rounded-t-full blur-[120px] pointer-events-none" />
@@ -47,9 +57,10 @@ const Footer = () => {
                             </div>
                             <div className="flex flex-col gap-4">
                                 <span className="text-white font-bold mb-2 uppercase tracking-widest text-xs">Socials</span>
-                                <a href="#" className="hover:text-white transition-colors">Instagram</a>
-                                <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
-                                <a href="#" className="hover:text-white transition-colors">Behance</a>
+                                <a href="https://www.instagram.com/maxpixadvertising7/reels/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary-red)] transition-colors">Instagram</a>
+                                <a href="https://ae.linkedin.com/company/maxpix-advertising-llc-uae" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary-red)] transition-colors">LinkedIn</a>
+                                <a href="https://www.facebook.com/maxpixadvertising7/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary-red)] transition-colors">Facebook</a>
+                                <a href="https://www.youtube.com/@MaxpixAdvertising" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary-red)] transition-colors">YouTube</a>
                             </div>
                         </div>
                     </div>
